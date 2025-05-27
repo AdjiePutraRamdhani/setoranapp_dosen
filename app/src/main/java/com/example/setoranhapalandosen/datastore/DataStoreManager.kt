@@ -43,6 +43,11 @@ class DataStoreManager @Inject constructor(@ApplicationContext private val conte
         }
     }
 
+    suspend fun clear() {
+        context.dataStore.edit { it.clear() }
+    }
+
+
     // =
     // === READ FUNCTIONS ===
     // =
