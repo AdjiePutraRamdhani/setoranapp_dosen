@@ -125,7 +125,7 @@ fun LoginScreen(nav: NavHostController, vm: AuthViewModel = hiltViewModel()) {
                                 // Cek status login
                                 if (vm.token.isNotEmpty()) {
                                     errorMessage = ""
-                                    nav.navigate("dashboard") {
+                                    nav.navigate("main") {
                                         popUpTo("login") { inclusive = true }
                                     }
                                 } else {
