@@ -10,6 +10,9 @@ import com.example.setoranhapalandosen.datastore.DataStoreManager
 import com.example.setoranhapalandosen.model.*
 import com.example.setoranhapalandosen.network.ApiClient
 import com.example.setoranhapalandosen.network.getUserProfileFromApi
+import com.example.setoranhapalandosen.network.getDetailMahasiswaFromApi
+import com.example.setoranhapalandosen.network.hapusSetoran
+import com.example.setoranhapalandosen.network.simpanSetoran
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.request.forms.submitForm
 import io.ktor.client.request.headers
@@ -55,6 +58,10 @@ class AuthViewModel @Inject constructor(
 
     private val _daftarMahasiswa = MutableStateFlow<List<MahasiswaPA>>(emptyList())
     val daftarMahasiswa: StateFlow<List<MahasiswaPA>> = _daftarMahasiswa.asStateFlow()
+
+    private val _detailMahasiswa = MutableStateFlow<DetailMahasiswaResponse?>(null)
+    val detailMahasiswa: StateFlow<DetailMahasiswaResponse?> = _detailMahasiswa.asStateFlow()
+
 
     init {
         viewModelScope.launch {
@@ -163,6 +170,78 @@ class AuthViewModel @Inject constructor(
 
     private fun updateStatus(newStatus: LoadingStatus) {
         _status.value = newStatus
+    }
+
+    fun fetchDetailMahasiswa(nim: String) {
+        viewModelScope.launch {
+            try {
+                val result = getDetailMahasiswaFromApi(nim, token)
+                result?.let {
+                    _detailMahasiswa.value = it
+                }
+            } catch (e: Exception) {
+                Log.e("AuthViewModel", "Gagal ambil detail mahasiswa: ${e.message}")
+                _error.value = "Gagal ambil detail mahasiswa: ${e.message}"
+            }
+        }
+    }
+
+    fun validasiKomponenSetoran(id: String, nama: String, nim: String) {
+        viewModelScope.launch {
+            try {
+                Log.d("AuthViewModel", "Mengirim validasi: id=$id, nama=$nama, nim=$nim")
+                Log.d("AuthViewModel", "Token: $token")
+
+                val currentDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                    .format(java.util.Date())
+
+                val body = SimpanSetoranRequest(
+                    data_setoran = listOf(
+                        KomponenSetoranRequest(
+                            nama_komponen_setoran = nama,
+                            id_komponen_setoran = id
+                        )
+                    ),
+                    tgl_setoran = currentDate
+                )
+
+                val response = simpanSetoran(token, nim, body)
+
+                Log.d("AuthViewModel", "Response dari server: ${response.message}")
+
+                _error.value = response.message
+
+                if (response.response) {
+                    fetchDetailMahasiswa(nim) // refresh data setelah validasi
+                }
+            } catch (e: Exception) {
+                Log.e("AuthViewModel", "Gagal validasi: ${e.message}")
+                _error.value = "Gagal validasi: ${e.message}"
+            }
+        }
+    }
+
+    fun hapusKomponenSetoran(nim: String, komponen: HapusKomponen) {
+        viewModelScope.launch {
+            try {
+                val response = hapusSetoran(token, nim, listOf(komponen))
+                _error.value = response.message
+                if (response.response) {
+                    fetchDetailMahasiswa(nim)
+                }
+            } catch (e: Exception) {
+                Log.e("AuthViewModel", "Gagal hapus: ${e.message}")
+                _error.value = "Gagal hapus: ${e.message}"
+            }
+        }
+    }
+
+    fun setError(message: String) {
+        _error.value = message
+    }
+
+    fun clearError() {
+        _error.value = ""
     }
 }
 
