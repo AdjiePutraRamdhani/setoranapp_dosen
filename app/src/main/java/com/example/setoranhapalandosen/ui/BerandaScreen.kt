@@ -10,10 +10,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.setoranhapalandosen.viewmodel.AuthViewModel
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.setoranhapalandosen.viewmodel.LoadingStatus
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.text.font.FontWeight
-
+import com.example.setoranhapalandosen.viewmodel.LoadingStatus
 
 @Composable
 fun BerandaScreen(
@@ -97,6 +96,8 @@ fun BerandaScreen(
         }
     }
 }
+
+
 @Composable
 fun DropdownMenuFilter(
     items: List<String>,
@@ -105,9 +106,10 @@ fun DropdownMenuFilter(
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .padding(vertical = 8.dp)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
     ) {
         OutlinedButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Angkatan: $selected")
@@ -126,4 +128,3 @@ fun DropdownMenuFilter(
         }
     }
 }
-

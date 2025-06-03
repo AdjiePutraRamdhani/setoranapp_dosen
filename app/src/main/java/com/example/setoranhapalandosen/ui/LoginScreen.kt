@@ -35,7 +35,6 @@ fun LoginScreen(nav: NavHostController, vm: AuthViewModel = hiltViewModel()) {
         LoadingScreen()
         return
     }
-
     Box(
         modifier = Modifier
             .fillMaxSize()

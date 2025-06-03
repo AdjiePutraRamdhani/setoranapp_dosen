@@ -51,6 +51,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     implementation("androidx.compose.material:material-icons-extended")
+
     implementation("com.airbnb.android:lottie-compose:6.1.0")
 
 
