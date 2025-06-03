@@ -23,10 +23,10 @@
 
 ## 📁 Struktur Proyek
 setoranapp_dosen/
-├── data/           # Repository, entitas, dan database Room
-├── ui/             # Semua komponen UI Compose (screen, komponen, dll.)
-├── navigation/     # Navigasi antar screen
-├── datastore/      # Helper untuk penyimpanan DataStore
+├── data/             # Repository, entitas, dan database Room
+├── ui/               # Semua komponen UI Compose (screen, komponen, dll.)
+├── navigation/       # Navigasi antar screen
+├── datastore/        # Helper untuk penyimpanan DataStore
 ├── MainActivity.kt
 ├── App.kt
 
