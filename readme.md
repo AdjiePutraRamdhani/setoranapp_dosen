@@ -1,33 +1,39 @@
 # 📚 SetoranApp Dosen
 
-**SetoranApp Dosen** adalah aplikasi Android berbasis Jetpack Compose yang dirancang untuk membantu dosen dalam mencatat, memantau, dan mengevaluasi setoran hafalan mahasiswa. Aplikasi ini mempermudah pengelolaan hafalan dalam lingkungan akademik berbasis digital.
+Aplikasi mobile Android untuk memudahkan dosen dalam memantau dan memvalidasi setoran mahasiswa secara digital. Dibangun dengan **Kotlin**, **Jetpack Compose**, dan terintegrasi dengan REST API dari sistem akademik.
+
+---
 
 ## ✨ Fitur Utama
 
-- ✅ Tambah, ubah, dan hapus data setoran hafalan
-- ✅ Lihat daftar setoran berdasarkan mahasiswa
-- ✅ Simpan data pengguna secara lokal
-- ✅ Navigasi antar layar yang intuitif
-- ✅ Antarmuka modern berbasis Jetpack Compose
+- 🔐 Autentikasi dosen menggunakan token login
+- 👨‍🎓 Menampilkan daftar mahasiswa bimbingan
+- 📑 Melihat riwayat setoran mahasiswa
+- ✅ Validasi dan simpan setoran mahasiswa
+- 🗑️ Menghapus komponen setoran
+- 📊 Statistik setoran per mahasiswa
+- 👤 Informasi profil dosen dan rekap mahasiswa per angkatan
 
-## 🛠️ Teknologi yang Digunakan
+---
 
-- **Bahasa Pemrograman**: Kotlin  
-- **UI Toolkit**: [Jetpack Compose](https://developer.android.com/jetpack/compose)  
-- **Navigasi**: Jetpack Compose Navigation  
-- **Arsitektur**: MVVM (Model-View-ViewModel)  
-- **Database Lokal**: Room Persistence Library  
-- **Penyimpanan Data**: DataStore Preferences  
-- **Konfigurasi Gradle**: Kotlin DSL (`build.gradle.kts`)  
-- **Minimum SDK**: Android 7.0 (API Level 24)
+## 🧰 Teknologi yang Digunakan
 
-## 📁 Struktur Proyek
-setoranapp_dosen/
-├── data/             # Repository, entitas, dan database Room
-├── ui/               # Semua komponen UI Compose (screen, komponen, dll.)
-├── navigation/       # Navigasi antar screen
-├── datastore/        # Helper untuk penyimpanan DataStore
-├── MainActivity.kt
-├── App.kt
+- **Kotlin**
+- **Jetpack Compose**
+- **Hilt (Dependency Injection)**
+- **Retrofit (Networking)**
+- **DataStore (Local Preferences)**
+- **ViewModel + State Management**
+- **Kotlin Coroutines & Flow**
+- **Navigation Compose**
 
-💡 Aplikasi ini masih dalam tahap pengembangan.
+---
+
+## 🧪 Catatan Tambahan
+- Dibutuhkan akses internet saat menggunakan aplikasi
+- Token login dosen disimpan secara lokal dengan DataStore
+- Tampilan responsif dan mendukung tema terang/gelap
+
+> ⚠️ **PERINGATAN**  
+> Aplikasi ini **masih dalam tahap pengembangan aktif**.  
+> Beberapa fitur mungkin belum sepenuhnya stabil, dan struktur kode masih dapat berubah sewaktu-waktu.
