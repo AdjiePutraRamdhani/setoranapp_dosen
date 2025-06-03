@@ -34,7 +34,7 @@ Aplikasi mobile Android untuk memudahkan dosen dalam memantau dan memvalidasi se
 - Token login dosen disimpan secara lokal dengan DataStore
 - Tampilan responsif dan mendukung tema terang/gelap
 
----
+
 
 > ⚠️ **PERINGATAN**  
 > Aplikasi ini **masih dalam tahap pengembangan aktif**.  
