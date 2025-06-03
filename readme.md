@@ -1,6 +1,6 @@
 # 📚 SetoranApp Dosen
 
-Aplikasi mobile Android untuk memudahkan dosen dalam memantau dan memvalidasi setoran mahasiswa secara digital. Dibangun dengan **Kotlin**, **Jetpack Compose**, dan terintegrasi dengan REST API dari sistem akademik.
+SetoranApp Dosen adalah aplikasi Android yang dirancang untuk membantu dosen dalam memantau dan mengelola setoran hafalan mahasiswa. Aplikasi ini mendukung proses pembelajaran berbasis hafalan dengan fitur-fitur yang memudahkan pencatatan, evaluasi, dan pelaporan.
 
 ---
 
