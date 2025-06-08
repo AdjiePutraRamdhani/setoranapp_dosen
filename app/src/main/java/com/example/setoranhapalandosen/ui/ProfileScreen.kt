@@ -22,9 +22,7 @@ fun ProfilScreen(nav: NavHostController, vm: AuthViewModel = hiltViewModel()) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Profil Dosen", style = MaterialTheme.typography.headlineSmall)
-
-        Card(modifier = Modifier.fillMaxWidth()) {
+            Card(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Nama: $nama")
                 Text("Email: $email")
@@ -32,10 +30,25 @@ fun ProfilScreen(nav: NavHostController, vm: AuthViewModel = hiltViewModel()) {
             }
         }
 
-        Text("Ringkasan Mahasiswa PA per Angkatan", style = MaterialTheme.typography.titleMedium)
-        ringkasan.forEach {
-            Text("- Angkatan ${it.tahun}: ${it.total} mahasiswa")
+        // --- MODIFIKASI DIMULAI DI SINI: Memasukkan Ringkasan ke dalam Card ---
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    "Ringkasan Mahasiswa PA per Angkatan",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                // Memberi sedikit jarak antara judul dan daftar angkatan
+                Spacer(modifier = Modifier.height(8.dp))
+                if (ringkasan.isEmpty()) {
+                    Text("Belum ada data ringkasan mahasiswa.")
+                } else {
+                    ringkasan.forEach {
+                        Text("- Angkatan ${it.tahun}: ${it.total} mahasiswa")
+                    }
+                }
+            }
         }
+        // --- MODIFIKASI BERAKHIR DI SINI ---
 
         Spacer(modifier = Modifier.weight(1f)) // mendorong tombol ke bawah
 
