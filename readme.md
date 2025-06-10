@@ -21,7 +21,7 @@ SetoranApp Dosen adalah aplikasi Android yang dirancang untuk membantu dosen dal
 - **Kotlin**
 - **Jetpack Compose**
 - **Hilt (Dependency Injection)**
-- **Retrofit (Networking)**
+- **Ktor Client (Networking)**
 - **DataStore (Local Preferences)**
 - **ViewModel + State Management**
 - **Kotlin Coroutines & Flow**
